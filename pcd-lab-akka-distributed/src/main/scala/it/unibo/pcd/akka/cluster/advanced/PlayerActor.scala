@@ -20,7 +20,7 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
   var localGrid: Grid = null
   var lobby: ActorRef[LobbyMessage] = null
   var hostPlayer: ActorRef[PlayerMessage] = null
-  var activePlayers: MutableMap[String, ActorRef[GameGrid | NewMove | CellFocus]] = null
+  var activePlayers: MutableMap[String, ActorRef[GameGrid | NewMove | CellFocus]] = MutableMap(id -> context.self)
   var localGUI: SudokuGUI = null
 
   context.spawnAnonymous {
@@ -63,14 +63,13 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
  
       case GameGrid(globalGrid) =>
         localGrid = globalGrid
-        Behaviors.same
         localGUI = SudokuGUI(9, this)
         localGUI.render()
         Behaviors.same
  
       case SendMove(id, row, col, n) =>
-        localGrid.set(row, col, n)
-        activePlayers.filter((pid, _) => id != pid).values.foreach(act => act ! NewMove(row, col, n))
+        if(localGrid.get(row, col) != n) then
+          activePlayers.values.foreach(act => act ! NewMove(row, col, n))
         Behaviors.same
  
       case NewMove(row, col, n) =>
@@ -78,11 +77,23 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
         localGUI.render()
         Behaviors.same
  
+      case SendFocus(id, row, col) =>
+        activePlayers.values.foreach(act => act ! CellFocus(id, row, col))
+        Behaviors.same
+
       case CellFocus(id, row, col) =>
-        if (hostPlayer == null) then // We are the host player.
-          activePlayers.filter((pid, _) => id != pid).values.foreach(act => act ! CellFocus(id, row, col))
         localGUI.updateGUIFocus(id, row, col)
         Behaviors.same
  
  
-  def cellFocused(row: Int, col: Int): Unit = activePlayers.values.foreach(act => act ! CellFocus(id, row, col))
+  def cellFocused(row: Int, col: Int): Unit = 
+    if(hostPlayer == null) then 
+      context.self ! SendFocus(id, row, col)
+    else
+      hostPlayer ! SendFocus(id, row, col)
+
+  def cellWritten(row: Int, col: Int, value: Int): Unit = 
+    if(hostPlayer == null) then 
+      context.self ! SendMove(id, row, col, value)
+    else
+      hostPlayer ! SendMove(id, row, col, value)

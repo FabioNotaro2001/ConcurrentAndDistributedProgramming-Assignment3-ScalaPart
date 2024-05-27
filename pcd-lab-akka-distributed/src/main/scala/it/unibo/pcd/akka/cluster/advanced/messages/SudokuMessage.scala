@@ -15,6 +15,5 @@ case class GameGrid(grid: Grid) extends PlayerMessage
 case class SendMove(playerID: String, row: Int, col: Int, number: Int) extends PlayerMessage
 case class NewMove(row: Int, col: Int, number: Int) extends PlayerMessage
 case class Games(players: List[ActorRef[PlayerMessage]]) extends PlayerMessage
+case class SendFocus(playerID: String, row: Int, col: Int) extends PlayerMessage
 case class CellFocus(playerID: String, row: Int, col: Int) extends PlayerMessage
-
-

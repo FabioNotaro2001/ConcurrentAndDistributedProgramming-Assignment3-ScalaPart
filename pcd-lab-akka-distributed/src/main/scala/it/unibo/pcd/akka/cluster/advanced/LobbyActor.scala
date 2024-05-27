@@ -21,7 +21,6 @@ object LobbyActor:
     private val players = MutableMap[String, ActorRef[PlayerMessage]]()
    
     private val listingResponseAdapter = context.messageAdapter[Receptionist.Listing](aListingResponse.apply)
-    context.system.receptionist ! Receptionist.Subscribe(lobbyKey, listingResponseAdapter)
     context.system.receptionist ! Receptionist.Register(lobbyKey, context.self)
  
     override def onMessage(message: LobbyMessage | aListingResponse): Behavior[LobbyMessage| aListingResponse] =

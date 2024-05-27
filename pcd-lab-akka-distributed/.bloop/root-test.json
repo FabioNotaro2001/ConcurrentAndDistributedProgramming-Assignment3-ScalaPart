@@ -2,19 +2,19 @@
     "version": "1.4.0",
     "project": {
         "name": "root-test",
-        "directory": "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed",
-        "workspaceDir": "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed",
+        "directory": "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed",
+        "workspaceDir": "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed",
         "sources": [
-            "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed\\src\\test\\scala",
-            "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed\\src\\test\\scala-3",
-            "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed\\src\\test\\java",
-            "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed\\target\\scala-3.3.3\\src_managed\\test"
+            "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed\\src\\test\\scala",
+            "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed\\src\\test\\scala-3",
+            "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed\\src\\test\\java",
+            "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed\\target\\scala-3.3.3\\src_managed\\test"
         ],
         "dependencies": [
             "root"
         ],
         "classpath": [
-            "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed\\.bloop\\root\\scala-3\\classes",
+            "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed\\.bloop\\root\\scala-3\\classes",
             "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala3-library_3\\3.3.3\\scala3-library_3-3.3.3.jar",
             "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-actor-typed_3\\2.8.5\\akka-actor-typed_3-2.8.5.jar",
             "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-remote_3\\2.8.5\\akka-remote_3-2.8.5.jar",
@@ -62,11 +62,11 @@
             "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-a64asm\\1.0.0\\jnr-a64asm-1.0.0.jar",
             "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-x86asm\\1.0.2\\jnr-x86asm-1.0.2.jar"
         ],
-        "out": "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed\\.bloop\\root",
-        "classesDir": "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed\\.bloop\\root\\scala-3\\test-classes",
+        "out": "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed\\.bloop\\root",
+        "classesDir": "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed\\.bloop\\root\\scala-3\\test-classes",
         "resources": [
-            "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed\\src\\test\\resources",
-            "C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed\\target\\scala-3.3.3\\resource_managed\\test"
+            "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed\\src\\test\\resources",
+            "C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed\\target\\scala-3.3.3\\resource_managed\\test"
         ],
         "scala": {
             "organization": "org.scala-lang",
@@ -205,7 +205,7 @@
             "config": {
                 "home": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.2.13-hotspot",
                 "options": [
-                    "-Duser.dir=C:\\Users\\fabio\\Desktop\\pcd-lab-akka-distributed"
+                    "-Duser.dir=C:\\Users\\fabio\\Desktop\\Assignment3-scala\\pcd-lab-akka-distributed"
                 ]
             },
             "mainClass": [
@@ -228,11 +228,6 @@
                             "name": "scala3-library_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala3-library_3\\3.3.3\\scala3-library_3-3.3.3-sources.jar"
-                        },
-                        {
-                            "name": "scala3-library_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala3-library_3\\3.3.3\\scala3-library_3-3.3.3-javadoc.jar"
                         }
                     ]
                 },
@@ -250,11 +245,6 @@
                             "name": "akka-actor-typed_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-actor-typed_3\\2.8.5\\akka-actor-typed_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-actor-typed_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-actor-typed_3\\2.8.5\\akka-actor-typed_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -272,11 +262,6 @@
                             "name": "akka-remote_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-remote_3\\2.8.5\\akka-remote_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-remote_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-remote_3\\2.8.5\\akka-remote_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -294,11 +279,6 @@
                             "name": "akka-cluster-typed_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-cluster-typed_3\\2.8.5\\akka-cluster-typed_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-cluster-typed_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-cluster-typed_3\\2.8.5\\akka-cluster-typed_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -316,11 +296,6 @@
                             "name": "akka-serialization-jackson_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-serialization-jackson_3\\2.8.5\\akka-serialization-jackson_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-serialization-jackson_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-serialization-jackson_3\\2.8.5\\akka-serialization-jackson_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -338,11 +313,6 @@
                             "name": "logback-classic",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-classic\\1.2.3\\logback-classic-1.2.3-sources.jar"
-                        },
-                        {
-                            "name": "logback-classic",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-classic\\1.2.3\\logback-classic-1.2.3-javadoc.jar"
                         }
                     ]
                 },
@@ -360,11 +330,6 @@
                             "name": "scala-library",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-library\\2.13.12\\scala-library-2.13.12-sources.jar"
-                        },
-                        {
-                            "name": "scala-library",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-library\\2.13.12\\scala-library-2.13.12-javadoc.jar"
                         }
                     ]
                 },
@@ -382,11 +347,6 @@
                             "name": "akka-actor_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-actor_3\\2.8.5\\akka-actor_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-actor_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-actor_3\\2.8.5\\akka-actor_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -404,11 +364,6 @@
                             "name": "akka-slf4j_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-slf4j_3\\2.8.5\\akka-slf4j_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-slf4j_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-slf4j_3\\2.8.5\\akka-slf4j_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -426,11 +381,6 @@
                             "name": "slf4j-api",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\slf4j\\slf4j-api\\1.7.36\\slf4j-api-1.7.36-sources.jar"
-                        },
-                        {
-                            "name": "slf4j-api",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\slf4j\\slf4j-api\\1.7.36\\slf4j-api-1.7.36-javadoc.jar"
                         }
                     ]
                 },
@@ -448,11 +398,6 @@
                             "name": "akka-stream_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-stream_3\\2.8.5\\akka-stream_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-stream_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-stream_3\\2.8.5\\akka-stream_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -470,11 +415,6 @@
                             "name": "akka-pki_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-pki_3\\2.8.5\\akka-pki_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-pki_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-pki_3\\2.8.5\\akka-pki_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -492,11 +432,6 @@
                             "name": "agrona",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\agrona\\agrona\\1.17.1\\agrona-1.17.1-sources.jar"
-                        },
-                        {
-                            "name": "agrona",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\agrona\\agrona\\1.17.1\\agrona-1.17.1-javadoc.jar"
                         }
                     ]
                 },
@@ -514,11 +449,6 @@
                             "name": "akka-cluster_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-cluster_3\\2.8.5\\akka-cluster_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-cluster_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-cluster_3\\2.8.5\\akka-cluster_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -536,11 +466,6 @@
                             "name": "akka-cluster-tools_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-cluster-tools_3\\2.8.5\\akka-cluster-tools_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-cluster-tools_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-cluster-tools_3\\2.8.5\\akka-cluster-tools_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -558,11 +483,6 @@
                             "name": "akka-distributed-data_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-distributed-data_3\\2.8.5\\akka-distributed-data_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-distributed-data_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-distributed-data_3\\2.8.5\\akka-distributed-data_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -580,11 +500,6 @@
                             "name": "jackson-core",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\core\\jackson-core\\2.13.5\\jackson-core-2.13.5-sources.jar"
-                        },
-                        {
-                            "name": "jackson-core",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\core\\jackson-core\\2.13.5\\jackson-core-2.13.5-javadoc.jar"
                         }
                     ]
                 },
@@ -602,11 +517,6 @@
                             "name": "jackson-annotations",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\core\\jackson-annotations\\2.13.5\\jackson-annotations-2.13.5-sources.jar"
-                        },
-                        {
-                            "name": "jackson-annotations",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\core\\jackson-annotations\\2.13.5\\jackson-annotations-2.13.5-javadoc.jar"
                         }
                     ]
                 },
@@ -624,11 +534,6 @@
                             "name": "jackson-databind",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\core\\jackson-databind\\2.13.5\\jackson-databind-2.13.5-sources.jar"
-                        },
-                        {
-                            "name": "jackson-databind",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\core\\jackson-databind\\2.13.5\\jackson-databind-2.13.5-javadoc.jar"
                         }
                     ]
                 },
@@ -646,11 +551,6 @@
                             "name": "jackson-datatype-jdk8",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\datatype\\jackson-datatype-jdk8\\2.13.5\\jackson-datatype-jdk8-2.13.5-sources.jar"
-                        },
-                        {
-                            "name": "jackson-datatype-jdk8",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\datatype\\jackson-datatype-jdk8\\2.13.5\\jackson-datatype-jdk8-2.13.5-javadoc.jar"
                         }
                     ]
                 },
@@ -668,11 +568,6 @@
                             "name": "jackson-datatype-jsr310",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\datatype\\jackson-datatype-jsr310\\2.13.5\\jackson-datatype-jsr310-2.13.5-sources.jar"
-                        },
-                        {
-                            "name": "jackson-datatype-jsr310",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\datatype\\jackson-datatype-jsr310\\2.13.5\\jackson-datatype-jsr310-2.13.5-javadoc.jar"
                         }
                     ]
                 },
@@ -690,11 +585,6 @@
                             "name": "jackson-module-parameter-names",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\module\\jackson-module-parameter-names\\2.13.5\\jackson-module-parameter-names-2.13.5-sources.jar"
-                        },
-                        {
-                            "name": "jackson-module-parameter-names",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\module\\jackson-module-parameter-names\\2.13.5\\jackson-module-parameter-names-2.13.5-javadoc.jar"
                         }
                     ]
                 },
@@ -712,11 +602,6 @@
                             "name": "jackson-dataformat-cbor",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\dataformat\\jackson-dataformat-cbor\\2.13.5\\jackson-dataformat-cbor-2.13.5-sources.jar"
-                        },
-                        {
-                            "name": "jackson-dataformat-cbor",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\dataformat\\jackson-dataformat-cbor\\2.13.5\\jackson-dataformat-cbor-2.13.5-javadoc.jar"
                         }
                     ]
                 },
@@ -734,11 +619,6 @@
                             "name": "jackson-module-scala_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\module\\jackson-module-scala_3\\2.13.5\\jackson-module-scala_3-2.13.5-sources.jar"
-                        },
-                        {
-                            "name": "jackson-module-scala_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\fasterxml\\jackson\\module\\jackson-module-scala_3\\2.13.5\\jackson-module-scala_3-2.13.5-javadoc.jar"
                         }
                     ]
                 },
@@ -756,11 +636,6 @@
                             "name": "lz4-java",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\lz4\\lz4-java\\1.8.0\\lz4-java-1.8.0-sources.jar"
-                        },
-                        {
-                            "name": "lz4-java",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\lz4\\lz4-java\\1.8.0\\lz4-java-1.8.0-javadoc.jar"
                         }
                     ]
                 },
@@ -778,11 +653,6 @@
                             "name": "logback-core",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-core\\1.2.3\\logback-core-1.2.3-sources.jar"
-                        },
-                        {
-                            "name": "logback-core",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\qos\\logback\\logback-core\\1.2.3\\logback-core-1.2.3-javadoc.jar"
                         }
                     ]
                 },
@@ -800,11 +670,6 @@
                             "name": "config",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\config\\1.4.2\\config-1.4.2-sources.jar"
-                        },
-                        {
-                            "name": "config",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\config\\1.4.2\\config-1.4.2-javadoc.jar"
                         }
                     ]
                 },
@@ -822,11 +687,6 @@
                             "name": "scala-java8-compat_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-java8-compat_3\\1.0.0\\scala-java8-compat_3-1.0.0-sources.jar"
-                        },
-                        {
-                            "name": "scala-java8-compat_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-java8-compat_3\\1.0.0\\scala-java8-compat_3-1.0.0-javadoc.jar"
                         }
                     ]
                 },
@@ -844,11 +704,6 @@
                             "name": "akka-protobuf-v3_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-protobuf-v3_3\\2.8.5\\akka-protobuf-v3_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-protobuf-v3_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-protobuf-v3_3\\2.8.5\\akka-protobuf-v3_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -866,11 +721,6 @@
                             "name": "reactive-streams",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\reactivestreams\\reactive-streams\\1.0.4\\reactive-streams-1.0.4-sources.jar"
-                        },
-                        {
-                            "name": "reactive-streams",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\reactivestreams\\reactive-streams\\1.0.4\\reactive-streams-1.0.4-javadoc.jar"
                         }
                     ]
                 },
@@ -888,11 +738,6 @@
                             "name": "ssl-config-core_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\ssl-config-core_3\\0.6.1\\ssl-config-core_3-0.6.1-sources.jar"
-                        },
-                        {
-                            "name": "ssl-config-core_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\ssl-config-core_3\\0.6.1\\ssl-config-core_3-0.6.1-javadoc.jar"
                         }
                     ]
                 },
@@ -910,11 +755,6 @@
                             "name": "asn-one",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\hierynomus\\asn-one\\0.6.0\\asn-one-0.6.0-sources.jar"
-                        },
-                        {
-                            "name": "asn-one",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\hierynomus\\asn-one\\0.6.0\\asn-one-0.6.0-javadoc.jar"
                         }
                     ]
                 },
@@ -932,11 +772,6 @@
                             "name": "akka-coordination_3",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-coordination_3\\2.8.5\\akka-coordination_3-2.8.5-sources.jar"
-                        },
-                        {
-                            "name": "akka-coordination_3",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\akka\\akka-coordination_3\\2.8.5\\akka-coordination_3-2.8.5-javadoc.jar"
                         }
                     ]
                 },
@@ -954,11 +789,6 @@
                             "name": "lmdbjava",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\lmdbjava\\lmdbjava\\0.8.3\\lmdbjava-0.8.3-sources.jar"
-                        },
-                        {
-                            "name": "lmdbjava",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\lmdbjava\\lmdbjava\\0.8.3\\lmdbjava-0.8.3-javadoc.jar"
                         }
                     ]
                 },
@@ -976,11 +806,6 @@
                             "name": "paranamer",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\thoughtworks\\paranamer\\paranamer\\2.8\\paranamer-2.8-sources.jar"
-                        },
-                        {
-                            "name": "paranamer",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\thoughtworks\\paranamer\\paranamer\\2.8\\paranamer-2.8-javadoc.jar"
                         }
                     ]
                 },
@@ -998,11 +823,6 @@
                             "name": "jnr-constants",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-constants\\0.10.4\\jnr-constants-0.10.4-sources.jar"
-                        },
-                        {
-                            "name": "jnr-constants",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-constants\\0.10.4\\jnr-constants-0.10.4-javadoc.jar"
                         }
                     ]
                 },
@@ -1020,11 +840,6 @@
                             "name": "jnr-ffi",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-ffi\\2.2.13\\jnr-ffi-2.2.13-sources.jar"
-                        },
-                        {
-                            "name": "jnr-ffi",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-ffi\\2.2.13\\jnr-ffi-2.2.13-javadoc.jar"
                         }
                     ]
                 },
@@ -1042,11 +857,6 @@
                             "name": "jffi",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jffi\\1.3.10\\jffi-1.3.10-sources.jar"
-                        },
-                        {
-                            "name": "jffi",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jffi\\1.3.10\\jffi-1.3.10-javadoc.jar"
                         }
                     ]
                 },
@@ -1064,11 +874,6 @@
                             "name": "asm",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm\\9.2\\asm-9.2-sources.jar"
-                        },
-                        {
-                            "name": "asm",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm\\9.2\\asm-9.2-javadoc.jar"
                         }
                     ]
                 },
@@ -1086,11 +891,6 @@
                             "name": "asm-commons",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm-commons\\9.2\\asm-commons-9.2-sources.jar"
-                        },
-                        {
-                            "name": "asm-commons",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm-commons\\9.2\\asm-commons-9.2-javadoc.jar"
                         }
                     ]
                 },
@@ -1108,11 +908,6 @@
                             "name": "asm-analysis",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm-analysis\\9.2\\asm-analysis-9.2-sources.jar"
-                        },
-                        {
-                            "name": "asm-analysis",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm-analysis\\9.2\\asm-analysis-9.2-javadoc.jar"
                         }
                     ]
                 },
@@ -1130,11 +925,6 @@
                             "name": "asm-tree",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm-tree\\9.2\\asm-tree-9.2-sources.jar"
-                        },
-                        {
-                            "name": "asm-tree",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm-tree\\9.2\\asm-tree-9.2-javadoc.jar"
                         }
                     ]
                 },
@@ -1152,11 +942,6 @@
                             "name": "asm-util",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm-util\\9.2\\asm-util-9.2-sources.jar"
-                        },
-                        {
-                            "name": "asm-util",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\ow2\\asm\\asm-util\\9.2\\asm-util-9.2-javadoc.jar"
                         }
                     ]
                 },
@@ -1174,11 +959,6 @@
                             "name": "jnr-a64asm",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-a64asm\\1.0.0\\jnr-a64asm-1.0.0-sources.jar"
-                        },
-                        {
-                            "name": "jnr-a64asm",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-a64asm\\1.0.0\\jnr-a64asm-1.0.0-javadoc.jar"
                         }
                     ]
                 },
@@ -1196,11 +976,6 @@
                             "name": "jnr-x86asm",
                             "classifier": "sources",
                             "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-x86asm\\1.0.2\\jnr-x86asm-1.0.2-sources.jar"
-                        },
-                        {
-                            "name": "jnr-x86asm",
-                            "classifier": "javadoc",
-                            "path": "C:\\Users\\fabio\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\jnr\\jnr-x86asm\\1.0.2\\jnr-x86asm-1.0.2-javadoc.jar"
                         }
                     ]
                 }
