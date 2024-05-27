@@ -22,23 +22,29 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
   var hostPlayer: ActorRef[PlayerMessage] = null
   var activePlayers: MutableMap[String, ActorRef[GameGrid | NewMove | CellFocus]] = null
   var localGUI: SudokuGUI = null
- 
-  private val listingResponseAdapter = context.messageAdapter[Receptionist.Listing](ListingResponse.apply)
- 
-  context.system.receptionist ! Receptionist.Subscribe(lobbyKey, listingResponseAdapter)
- 
- 
+
+  context.spawnAnonymous {
+    Behaviors.setup[Receptionist.Listing] {
+      inner =>
+        context.system.receptionist ! Receptionist.Subscribe(lobbyKey, inner.self)
+        Behaviors.receiveMessage {
+          case listing if listing.getServiceInstances(lobbyKey).isEmpty =>
+            inner.log.info("No lobby found")
+            Behaviors.same
+          case listing =>
+            inner.log.info("Lobby found")
+            lobby = listing.getServiceInstances(lobbyKey).iterator().next()
+            lobby ! FindGames(context.self.narrow[Games])
+            Behaviors.same
+        }
+    }
+  }
+
   override def onMessage(message: PlayerMessageExtended): Behavior[PlayerMessageExtended] =
  
     context.log.info("RECEIVED MESSAGE: {}", message.toString)
  
     message match
-      case ListingResponse(contents) =>
-        println("CONTENUTOOOOOOOOOOOOOOOOOOO" + contents)
-        lobby = contents.getServiceInstances(lobbyKey).iterator().next()
-        lobby ! FindGames(context.self.narrow[Games])
-        Behaviors.same
- 
       case Games(players) =>
         if (players.isEmpty) then
           localGrid = Grid(9, 9)
