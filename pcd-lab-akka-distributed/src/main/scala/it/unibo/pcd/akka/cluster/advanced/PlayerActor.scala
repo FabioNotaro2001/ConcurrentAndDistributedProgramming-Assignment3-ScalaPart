@@ -26,7 +26,7 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
   context.spawnAnonymous {
     Behaviors.setup[Receptionist.Listing] {
       inner =>
-        context.system.receptionist ! Receptionist.Find(lobbyKey, inner.self)
+        context.system.receptionist ! Receptionist.Subscribe(lobbyKey, inner.self)
         Behaviors.receiveMessage {
           case listing if listing.getServiceInstances(lobbyKey).isEmpty =>
             inner.log.info("No lobby found")
