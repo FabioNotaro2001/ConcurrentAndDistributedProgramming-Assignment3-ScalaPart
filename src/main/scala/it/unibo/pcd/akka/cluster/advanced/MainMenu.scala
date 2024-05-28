@@ -2,44 +2,63 @@ package it.unibo.pcd.akka.cluster.advanced
 
 import javax.swing.*
 import java.awt.*
+import scala.collection.immutable.List
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
+import akka.actor.typed.Behavior
+import akka.actor.typed.ActorRef
+import it.unibo.pcd.akka.cluster.startupWithRole
+import it.unibo.pcd.akka.cluster.advanced.messages.PlayerMessage
 
 object SimpleGameGUI extends App {
-  val frame = new JFrame("Game GUI")
-  frame.setSize(400, 200)
-  frame.setLayout(new BorderLayout())
+  private val onPlayerActorCreated = (actor: PlayerActor) => 
+    val frame = new JFrame("Game GUI")
+    frame.setSize(400, 200)
+    frame.setLayout(new BorderLayout())
 
-  val topPanel = new JPanel()
-  val createGameButton = new JButton("Create Game")
-  topPanel.add(createGameButton)
-  frame.add(topPanel, BorderLayout.NORTH)
+    val topPanel = new JPanel()
+    val createGameButton = new JButton("Create Game")
+    topPanel.add(createGameButton)
+    frame.add(topPanel, BorderLayout.NORTH)
 
-  val centerPanel = new JPanel()
-  centerPanel.setLayout(new FlowLayout())
+    val centerPanel = new JPanel()
+    centerPanel.setLayout(new FlowLayout())
 
-  val choices = Array("a", "b", "c")
-  val dropdownMenu = new JComboBox[String](choices)
-  centerPanel.add(dropdownMenu)
+    val dropdownMenu = new JComboBox[String]()
+    centerPanel.add(dropdownMenu)
+    
+    actor.setOnGamesUpdated:
+      (games: List[ActorRef[PlayerMessage]]) =>
+        if (!frame.isVisible())
+            frame.setVisible(true)
 
-  val joinButton = new JButton("Join")
-  centerPanel.add(joinButton)
+        dropdownMenu.removeAllItems()
+        // actor.availablegames.map(_.toString()).toArray
+        for 
+          g <- games
+          name = g.toString()
+        do dropdownMenu.addItem(name)
+        dropdownMenu.invalidate()
 
-  frame.add(centerPanel, BorderLayout.CENTER)
+    val joinButton = new JButton("Join")
+    centerPanel.add(joinButton)
 
-  createGameButton.addActionListener(new ActionListener {
-    override def actionPerformed(e: ActionEvent): Unit = {
-      JOptionPane.showMessageDialog(frame, "Game Created!")
-      frame.setVisible(false)
-    }
-  })
+    frame.add(centerPanel, BorderLayout.CENTER)
 
-  joinButton.addActionListener(new ActionListener {
-    override def actionPerformed(e: ActionEvent): Unit = {
-      val selectedChoice = dropdownMenu.getSelectedItem.toString
-      JOptionPane.showMessageDialog(frame, s"Joined game: $selectedChoice")
-      frame.setVisible(false)
-    }
-  })
-  frame.setVisible(true)
+    createGameButton.addActionListener(new ActionListener {
+      override def actionPerformed(e: ActionEvent): Unit = {
+        actor.startNewGame()
+        frame.setVisible(false)
+      }
+    })
+
+    joinButton.addActionListener(new ActionListener {
+      override def actionPerformed(e: ActionEvent): Unit = {
+        val selectedChoice = dropdownMenu.getSelectedIndex()
+        actor.joinGame(selectedChoice)
+        frame.setVisible(false)
+      }
+    })
+
+  startupWithRole(Roles.frontend, 0)(Root.player("P" + System.currentTimeMillis().hashCode().toString, onPlayerActorCreated))
 }

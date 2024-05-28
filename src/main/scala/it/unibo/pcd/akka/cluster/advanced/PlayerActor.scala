@@ -11,8 +11,13 @@ import scala.collection.mutable.Map as MutableMap
 type PlayerMessageExtended = PlayerMessage | ListingResponse
  
 object PlayerActor:
-  def apply(id: String): Behavior[PlayerMessageExtended] =
-    Behaviors.setup(context => PlayerActor(context, id))
+  def apply(id: String, onActorCreated: (PlayerActor) => Unit): Behavior[PlayerMessageExtended] =
+    Behaviors.setup(
+      context => 
+        val act = PlayerActor(context, id)
+        onActorCreated(act)
+        act
+      )
  
 private case class ListingResponse(listing: Receptionist.Listing)
  
@@ -22,6 +27,9 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
   var hostPlayer: ActorRef[PlayerMessage] = null
   var activePlayers: MutableMap[String, ActorRef[GameGrid | NewMove | CellFocus]] = MutableMap(id -> context.self)
   var localGUI: SudokuGUI = null
+
+  var availablegames: List[ActorRef[PlayerMessage]] = List()
+  var onGamesUpdated: (List[ActorRef[PlayerMessage]] => Unit) = _ => ()
 
   context.spawnAnonymous {
     Behaviors.setup[Receptionist.Listing] {
@@ -46,14 +54,8 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
  
     message match
       case Games(players) =>
-        if (players.isEmpty) then
-          localGrid = Grid(9, 9)
-          lobby ! CreateGame(id, context.self)
-          localGUI = SudokuGUI(9, this)
-          localGUI.render()
-        else
-          hostPlayer = players.head
-          hostPlayer ! JoinGame(id, context.self.narrow[GameGrid | NewMove | CellFocus])
+        availablegames = players
+        onGamesUpdated(players)
         Behaviors.same
  
       case JoinGame(id, replyTo) =>
@@ -68,13 +70,19 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
         Behaviors.same
  
       case SendMove(id, row, col, n) =>
-        if(localGrid.get(row, col) != n) then
-          activePlayers.values.foreach(act => act ! NewMove(row, col, n))
+        if localGrid.get(row, col) != n
+        then
+          val upd = localGrid.set(row, col, n)
+          activePlayers.filterNot(act => act._1 == this.id).values.foreach(act => act ! NewMove(row, col, n, upd))
+          localGUI.render()
         Behaviors.same
  
-      case NewMove(row, col, n) =>
-        localGrid.set(row, col, n)
-        localGUI.render()
+      case NewMove(row, col, n, upd) =>
+        if localGrid.specialSet(row, col, n, upd)
+        then
+          localGUI.render()
+        else
+          println("NO UPDATE")
         Behaviors.same
  
       case SendFocus(id, row, col) =>
@@ -84,8 +92,23 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
       case CellFocus(id, row, col) =>
         localGUI.updateGUIFocus(id, row, col)
         Behaviors.same
+      
+      case _ => Behaviors.same
  
+  def startNewGame(): Unit =
+    localGrid = Grid(9, 9)
+    localGrid.fill()
+    lobby ! CreateGame(id, context.self)
+    localGUI = SudokuGUI(9, this)
+    localGUI.render()
+
+  def joinGame(index: Int): Unit = 
+    hostPlayer = availablegames(index)
+    hostPlayer ! JoinGame(id, context.self.narrow[GameGrid | NewMove | CellFocus])
  
+  def setOnGamesUpdated(callback: (List[ActorRef[PlayerMessage]]) => Unit): Unit =
+    onGamesUpdated = callback
+
   def cellFocused(row: Int, col: Int): Unit = 
     if(hostPlayer == null) then 
       context.self ! SendFocus(id, row, col)
