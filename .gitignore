@@ -115,9 +115,7 @@ hs_err_pid*
 .bloop/
 .metals/
 .idea/
-
-../.bloop/
-../.metals/
-../.idea/
+.vscode/
+project/
 
 # End of https://www.toptal.com/developers/gitignore/api/scala,sbt,intellij+all
