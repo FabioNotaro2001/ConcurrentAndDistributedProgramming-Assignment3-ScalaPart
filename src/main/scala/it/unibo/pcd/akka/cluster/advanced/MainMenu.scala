@@ -9,6 +9,9 @@ import akka.actor.typed.Behavior
 import akka.actor.typed.ActorRef
 import it.unibo.pcd.akka.cluster.startupWithRole
 import it.unibo.pcd.akka.cluster.advanced.messages.PlayerMessage
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
+import it.unibo.pcd.akka.cluster.advanced.messages.Die
 
 object SimpleGameGUI extends App {
   private val onPlayerActorCreated = (actor: PlayerActor) => 
@@ -16,48 +19,67 @@ object SimpleGameGUI extends App {
     frame.setSize(400, 200)
     frame.setLayout(new BorderLayout())
 
+    var starting = true
+    var noGameSelected = true
+
     val topPanel = new JPanel()
+    
     val createGameButton = new JButton("Create Game")
+    createGameButton.disable()
     topPanel.add(createGameButton)
     frame.add(topPanel, BorderLayout.NORTH)
 
     val centerPanel = new JPanel()
     centerPanel.setLayout(new FlowLayout())
 
+    val joinButton = new JButton("Join")
+    joinButton.disable()
+    
     val dropdownMenu = new JComboBox[String]()
     centerPanel.add(dropdownMenu)
+    centerPanel.add(joinButton)
+    frame.add(centerPanel, BorderLayout.CENTER)
     
     actor.setOnGamesUpdated:
       (games: List[ActorRef[PlayerMessage]]) =>
-        if (!frame.isVisible())
-            frame.setVisible(true)
+        if (starting)
+          createGameButton.enable()
+          joinButton.enable()
+          starting = false
 
         dropdownMenu.removeAllItems()
-        // actor.availablegames.map(_.toString()).toArray
         for 
           g <- games
-          name = g.toString()
+          name = g.path.toString()
         do dropdownMenu.addItem(name)
         dropdownMenu.invalidate()
-
-    val joinButton = new JButton("Join")
-    centerPanel.add(joinButton)
-
-    frame.add(centerPanel, BorderLayout.CENTER)
+        frame.repaint()
 
     createGameButton.addActionListener(new ActionListener {
       override def actionPerformed(e: ActionEvent): Unit = {
-        actor.startNewGame()
+        noGameSelected = false
         frame.setVisible(false)
+        actor.startNewGame()
       }
     })
 
     joinButton.addActionListener(new ActionListener {
       override def actionPerformed(e: ActionEvent): Unit = {
+        noGameSelected = false
+        frame.setVisible(false)
         val selectedChoice = dropdownMenu.getSelectedIndex()
         actor.joinGame(selectedChoice)
-        frame.setVisible(false)
       }
+    })
+
+    frame.setVisible(true)
+
+    frame.addWindowListener(new WindowAdapter {
+      override def windowClosing(x: WindowEvent): Unit =
+        if (noGameSelected)
+        then
+          actor.context.self ! Die
+          System.exit(0)
     })
 
   startupWithRole(Roles.frontend, 0)(Root.player("P" + System.currentTimeMillis().hashCode().toString, onPlayerActorCreated))

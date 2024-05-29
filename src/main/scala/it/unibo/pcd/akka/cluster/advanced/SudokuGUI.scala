@@ -5,6 +5,9 @@ import java.awt.{Color, Dimension, GridLayout, BorderLayout}
 import java.awt.event.{ActionEvent, ActionListener, FocusAdapter, FocusEvent}
 import scala.collection.mutable.Map as MutableMap
 import javax.swing.JOptionPane
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
+import it.unibo.pcd.akka.cluster.advanced.messages.Die
 
 class SudokuGUI(val size: Int, player: PlayerActor):
   private val textFields = Array.ofDim[JTextField](9, 9)
@@ -67,7 +70,6 @@ class SudokuGUI(val size: Int, player: PlayerActor):
         textFields(i)(j).setText(if (value != 0) value.toString else "")
       }
     }
-
   
   checkButton.addActionListener(new ActionListener {
     override def actionPerformed(e: ActionEvent): Unit = {
@@ -77,6 +79,12 @@ class SudokuGUI(val size: Int, player: PlayerActor):
         JOptionPane.showMessageDialog(frame, "The Sudoku is not valid.", "Sudoku", JOptionPane.ERROR_MESSAGE)
       }
     }
+  })
+
+  frame.addWindowListener(new WindowAdapter {
+    override def windowClosing(x: WindowEvent): Unit =
+      player.context.self ! Die
+      System.exit(0)
   })
 
   
