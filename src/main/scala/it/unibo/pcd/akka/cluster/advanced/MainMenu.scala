@@ -25,7 +25,7 @@ object SimpleGameGUI extends App {
     val topPanel = new JPanel()
     
     val createGameButton = new JButton("Create Game")
-    createGameButton.disable()
+    createGameButton.setEnabled(false)
     topPanel.add(createGameButton)
     frame.add(topPanel, BorderLayout.NORTH)
 
@@ -33,7 +33,7 @@ object SimpleGameGUI extends App {
     centerPanel.setLayout(new FlowLayout())
 
     val joinButton = new JButton("Join")
-    joinButton.disable()
+    joinButton.setEnabled(false)
     
     val dropdownMenu = new JComboBox[String]()
     centerPanel.add(dropdownMenu)
@@ -42,16 +42,17 @@ object SimpleGameGUI extends App {
     
     actor.setOnGamesUpdated:
       (games: List[ActorRef[PlayerMessage]]) =>
-        if (starting)
-          createGameButton.enable()
-          joinButton.enable()
+        if starting then
+          createGameButton.setEnabled(true)
           starting = false
-
         dropdownMenu.removeAllItems()
-        for 
-          g <- games
-          name = g.path.toString()
-        do dropdownMenu.addItem(name)
+        if games.length == 0 then joinButton.setEnabled(false)
+        else
+          for 
+            g <- games
+            name = g.path.toString()
+          do dropdownMenu.addItem(name)
+          joinButton.setEnabled(true)
         dropdownMenu.invalidate()
         frame.repaint()
 

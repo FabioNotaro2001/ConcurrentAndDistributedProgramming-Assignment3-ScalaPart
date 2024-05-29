@@ -12,8 +12,6 @@ import scala.util.Random
 import it.unibo.pcd.akka.cluster.*
 import akka.actor.typed.ActorRef
 
-class Box[T](var contents: T)
-
 // create ants and then an frontend to visualise them.
 // It uses role to decide what kind of ActorSystem the node should deploy
 object Root:
