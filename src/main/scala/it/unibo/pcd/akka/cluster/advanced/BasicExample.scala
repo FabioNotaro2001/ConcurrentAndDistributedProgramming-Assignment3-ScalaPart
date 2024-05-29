@@ -35,11 +35,3 @@ object Root:
 
 @main def startLobby: Unit =
   startupWithRole(Roles.backend, 2551)(Root.lobby())
-
-@main def startPlayer1: Unit =
-  var actorBox: Box[ActorRef[PlayerMessageExtended]] = Box(null)
-  startupWithRole(Roles.frontend, 0)(Root.player("P1", _ => ()))
-
-@main def startPlayer2: Unit =
-  var actorBox: Box[ActorRef[PlayerMessageExtended]] = Box(null)
-  startupWithRole(Roles.frontend, 0)(Root.player("P2", _ => ()))
