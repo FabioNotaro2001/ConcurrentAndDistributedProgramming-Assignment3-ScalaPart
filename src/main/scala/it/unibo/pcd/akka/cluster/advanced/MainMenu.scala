@@ -41,7 +41,7 @@ object SimpleGameGUI extends App {
     frame.add(centerPanel, BorderLayout.CENTER)
     
     actor.setOnGamesUpdated:
-      (games: List[ActorRef[PlayerMessage]]) =>
+      (games: List[(String, ActorRef[PlayerMessage])]) =>
         if starting then
           createGameButton.setEnabled(true)
           starting = false
@@ -50,7 +50,7 @@ object SimpleGameGUI extends App {
         else
           for 
             g <- games
-            name = g.path.toString()
+            name = g._1
           do dropdownMenu.addItem(name)
           joinButton.setEnabled(true)
         dropdownMenu.invalidate()
@@ -68,8 +68,8 @@ object SimpleGameGUI extends App {
       override def actionPerformed(e: ActionEvent): Unit = {
         noGameSelected = false
         frame.setVisible(false)
-        val selectedChoice = dropdownMenu.getSelectedIndex()
-        actor.joinGame(selectedChoice)
+        val selectedChoice = dropdownMenu.getSelectedItem()
+        actor.joinGame(selectedChoice.toString())
       }
     })
 

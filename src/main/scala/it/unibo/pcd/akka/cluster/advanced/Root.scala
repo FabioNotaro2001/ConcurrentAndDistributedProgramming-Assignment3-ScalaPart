@@ -5,15 +5,12 @@ import akka.actor.typed.scaladsl.*
 import akka.cluster.typed.Cluster
 import com.typesafe.config.ConfigFactory
 import it.unibo.pcd.akka.cluster.seeds
-
 import concurrent.duration.{DurationInt, FiniteDuration}
 import scala.language.postfixOps
 import scala.util.Random
 import it.unibo.pcd.akka.cluster.*
 import akka.actor.typed.ActorRef
 
-// create ants and then an frontend to visualise them.
-// It uses role to decide what kind of ActorSystem the node should deploy
 object Root:
   def lobby(): Behavior[Nothing] =
     Behaviors.setup { ctx =>

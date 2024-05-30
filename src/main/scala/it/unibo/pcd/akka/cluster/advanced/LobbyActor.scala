@@ -27,26 +27,25 @@ object LobbyActor:
     context.system.receptionist ! Receptionist.Register(lobbyKey, context.self)
 
     override def onMessage(message: LobbyMessageExtended): Behavior[LobbyMessageExtended] =
-      println("ENTRATOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " + message)
+
       message match
         case LListingResponse(contents) =>
-          println("CONTENUTOOOOOOOOOOOOOOOOOOO LOBBYYYYYYYYYYYYYYYYYY" + contents)
           Behaviors.same
         
         case FindGames(id, player) =>
           activePlayers.put(id, player)
-          player ! Games(activeGames.values.toList)
+          player ! Games(activeGames.toList)
           Behaviors.same
 
         case CreateGame(id, player) =>
           activeGames.put(id, player)
-          activePlayers.filterNot(_._2 == player).foreach(_._2 ! Games(activeGames.values.toList))
+          activePlayers.filterNot(_._2 == player).foreach(_._2 ! Games(activeGames.toList))
           context.watchWith(player, PlayerDeath(id, player))
           Behaviors.same
         
         case EndGame(id) =>
           activeGames.remove(id)
-          activePlayers.foreach(_._2 ! Games(activeGames.values.toList))  
+          activePlayers.foreach(_._2 ! Games(activeGames.toList))  
           Behaviors.same
         
         case PlayerDeath(id, actor) =>
@@ -54,7 +53,7 @@ object LobbyActor:
             case Some(_) => 
               activePlayers.remove(id)
               activeGames.remove(id) match
-                case _: Some[Any] => activePlayers.foreach(_._2 ! Games(activeGames.values.toList))  
+                case _: Some[Any] => activePlayers.foreach(_._2 ! Games(activeGames.toList))  
                 case _ => ()
             case _ => ()
           Behaviors.same

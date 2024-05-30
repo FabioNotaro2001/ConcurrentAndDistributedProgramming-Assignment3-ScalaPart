@@ -12,7 +12,7 @@ case class FindGames(playerID: String, replyTo: ActorRef[PlayerMessage]) extends
 case class CreateGame(playerID: String, player: ActorRef[PlayerMessage]) extends LobbyMessage
 case class EndGame(playerID: String) extends LobbyMessage
 
-case class Games(players: List[ActorRef[PlayerMessage]]) extends PlayerMessage
+case class Games(players: List[(String, ActorRef[PlayerMessage])]) extends PlayerMessage
 object WatchHost extends PlayerMessage
 object Die extends PlayerMessage
 case class PlayerDeath(playerID: String, player: ActorRef[PlayerMessage]) extends PlayerMessage, LobbyMessage

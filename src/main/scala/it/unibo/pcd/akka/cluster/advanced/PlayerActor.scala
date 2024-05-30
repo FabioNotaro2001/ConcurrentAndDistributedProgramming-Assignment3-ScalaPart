@@ -27,11 +27,12 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
   var localGrid: Grid = null
   var lobby: ActorRef[LobbyMessage] = null
   var hostPlayer: ActorRef[PlayerMessage] = null
+  var hostPlayerId: String = ""
   var activePlayers: MutableMap[String, ActorRef[PlayerMessage]] = MutableMap()
   var localGUI: SudokuGUI = null
 
-  var availableGames: List[ActorRef[PlayerMessage]] = List()
-  var onGamesUpdated: (List[ActorRef[PlayerMessage]] => Unit) = _ => ()
+  var availableGames: MutableMap[String, ActorRef[PlayerMessage]] = MutableMap()
+  var onGamesUpdated: (List[(String, ActorRef[PlayerMessage])] => Unit) = _ => ()
 
   context.spawnAnonymous {
     Behaviors.setup[Receptionist.Listing] {
@@ -56,7 +57,7 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
  
     message match
       case Games(players) =>
-        availableGames = players
+        availableGames = MutableMap.from(players)
         onGamesUpdated(players)
         Behaviors.same
  
@@ -107,25 +108,25 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
         Behaviors.same
       
       case PlayerDeath(id, actor) => 
-        val pair = if id != "" then activePlayers.find(_._2 == actor) else activePlayers.get(id)
-        pair match
-          case Some((pid, _)) => 
-            activePlayers.filterNot(_._1 == pid).values.foreach(_ ! RemoveParticipant(pid))
-          case _ => ()
+        if activePlayers.contains(id) then
+          activePlayers.remove(id)
+          activePlayers.filterNot(_._1 == id).values.foreach(_ ! RemoveParticipant(id))
 
-        if (hostPlayer == actor)
-        then
+        if (hostPlayerId == id) 
+        then 
           activePlayers.min(Ordering.by((s, _) => s)) match // The new host is the player with the "smallest" id
-            case (_, act) if act == context.self => 
+            case (pid, _) if pid == this.id => 
               hostPlayer = null
+              hostPlayerId = ""
               lobby ! CreateGame(id, context.self)
             case (pid, act) => 
               hostPlayer = act
-              context.watchWith(hostPlayer, PlayerDeath(pid, hostPlayer))
+              hostPlayerId = pid
+              context.watchWith(hostPlayer, PlayerDeath(hostPlayerId, hostPlayer))
         Behaviors.same
 
       case WatchHost => 
-        context.watchWith(hostPlayer, PlayerDeath("", hostPlayer))
+        context.watchWith(hostPlayer, PlayerDeath(hostPlayerId, hostPlayer))
         Behaviors.same
 
       case Die => Behaviors.stopped
@@ -140,12 +141,13 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
     localGUI = SudokuGUI(9, this)
     localGUI.render()
 
-  def joinGame(index: Int): Unit = 
-    hostPlayer = availableGames(index)
+  def joinGame(playerId: String): Unit = 
+    hostPlayer = availableGames(playerId)
+    hostPlayerId = playerId
     context.self ! WatchHost
     hostPlayer ! JoinGame(id, context.self)
 
-  def setOnGamesUpdated(callback: (List[ActorRef[PlayerMessage]]) => Unit): Unit =
+  def setOnGamesUpdated(callback: (List[(String, ActorRef[PlayerMessage])]) => Unit): Unit =
     onGamesUpdated = callback
 
   def cellFocused(row: Int, col: Int): Unit = 
