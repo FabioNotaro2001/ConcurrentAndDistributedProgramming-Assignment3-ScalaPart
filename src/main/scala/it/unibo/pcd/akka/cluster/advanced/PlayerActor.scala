@@ -81,6 +81,7 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
 
       case RemoveParticipant(id) =>
         activePlayers.remove(id)
+        localGUI.removeFocus(id)
         Behaviors.same
 
       case SendMove(id, row, col, n) =>
@@ -110,7 +111,8 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
       case PlayerDeath(id, actor) => 
         if activePlayers.contains(id) then
           activePlayers.remove(id)
-          activePlayers.filterNot(_._1 == id).values.foreach(_ ! RemoveParticipant(id))
+          activePlayers.values.foreach(_ ! RemoveParticipant(id))
+          
 
         if (hostPlayerId == id) 
         then 

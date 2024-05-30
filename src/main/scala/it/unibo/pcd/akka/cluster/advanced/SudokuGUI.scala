@@ -30,10 +30,16 @@ class SudokuGUI(val size: Int, player: PlayerActor):
     panel.repaint()
   }
 
+  def removeFocus(id: String): Unit = 
+    if(selectedNow.contains(id)) then
+      val pos = selectedNow.remove(id).get
+      if(!LazyList.from(selectedNow.values).contains(pos)) then  
+        textFields(pos._1)(pos._2).setBackground(Color.WHITE)
+
+
   def updateGUIFocus(id: String, row: Int, col: Int): Unit =
     if(selectedNow.contains(id)) then
-      val pos = selectedNow(id)
-      selectedNow.remove(id)
+      val pos = selectedNow.remove(id).get
       if(!LazyList.from(selectedNow.values).contains(pos)) then  
         textFields(pos._1)(pos._2).setBackground(Color.WHITE)
     selectedNow.put(id, (row, col))
