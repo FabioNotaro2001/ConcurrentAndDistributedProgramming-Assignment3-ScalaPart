@@ -118,7 +118,7 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
             case (pid, _) if pid == this.id => 
               hostPlayer = null
               hostPlayerId = ""
-              lobby ! CreateGame(id, context.self)
+              lobby ! CreateGame(this.id, context.self)
             case (pid, act) => 
               hostPlayer = act
               hostPlayerId = pid
