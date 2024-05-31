@@ -17,21 +17,18 @@ object LobbyActor:
   val lobbyKey: ServiceKey[LobbyMessageExtended] = ServiceKey("lobby")
 
   def apply(): Behavior[LobbyMessageExtended] =
-    Behaviors.setup(context => LobbyActor(context))
+    Behaviors.setup(context => LobbyActor(context)) // Crea lobby actor e restituisce il behavior corrispondente.
 
   private case class LobbyActor(override val context: ActorContext[LobbyMessageExtended]) extends AbstractBehavior[LobbyMessageExtended](context):
-    private val activeGames = MutableMap[String, ActorRef[PlayerMessage]]()
-    private val activePlayers = MutableMap[String, ActorRef[PlayerMessage]]()
+    private val activeGames = MutableMap[String, ActorRef[PlayerMessage]]() // Mappa dei sudoku attivi dall'id del creatore all'attore creatore.
+    private val activePlayers = MutableMap[String, ActorRef[PlayerMessage]]() // Mappa dall'id del giocaroe all'attore del giocatore stesso.
 
-    private val listingResponseAdapter = context.messageAdapter[Receptionist.Listing](LListingResponse.apply)
-    context.system.receptionist ! Receptionist.Register(lobbyKey, context.self)
+    private val listingResponseAdapter = context.messageAdapter[Receptionist.Listing](LListingResponse.apply) // Receptionist, serve a trasformare i messaggi di tipo Receptionist.Listing a un tipo definito da te LListingResponse.
+    context.system.receptionist ! Receptionist.Register(lobbyKey, context.self) // Manda un messaggio al receptionist dicendo di registrare il lobby actor su quella lobby key.
 
+    // Metodo che definisce cosa fare quando un lobbyActor riceve un messaggio.
     override def onMessage(message: LobbyMessageExtended): Behavior[LobbyMessageExtended] =
-
       message match
-        case LListingResponse(contents) =>
-          Behaviors.same
-        
         case FindGames(id, player) =>
           activePlayers.put(id, player)
           player ! Games(activeGames.toList)

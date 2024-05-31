@@ -14,6 +14,7 @@ import java.awt.event.WindowEvent
 import it.unibo.pcd.akka.cluster.advanced.messages.Die
 
 object SimpleGameGUI extends App {
+  // Da questa callback gli viene restituito l'attore che è stato creato.
   private val onPlayerActorCreated = (actor: PlayerActor) => 
     val frame = new JFrame("Game GUI")
     frame.setSize(400, 200)
@@ -40,6 +41,7 @@ object SimpleGameGUI extends App {
     centerPanel.add(joinButton)
     frame.add(centerPanel, BorderLayout.CENTER)
     
+    // Esso serve quando l'attore riceve il messagio per le partite in corso per aggiornare la lista.
     actor.setOnGamesUpdated:
       (games: List[(String, ActorRef[PlayerMessage])]) =>
         if starting then
@@ -60,7 +62,7 @@ object SimpleGameGUI extends App {
       override def actionPerformed(e: ActionEvent): Unit = {
         noGameSelected = false
         frame.setVisible(false)
-        actor.startNewGame()
+        actor.startNewGame() // Si inizia un nuovo gioco.
       }
     })
 
@@ -69,7 +71,7 @@ object SimpleGameGUI extends App {
         noGameSelected = false
         frame.setVisible(false)
         val selectedChoice = dropdownMenu.getSelectedItem()
-        actor.joinGame(selectedChoice.toString())
+        actor.joinGame(selectedChoice.toString()) // Si partecipa a una partita già creata.
       }
     })
 
@@ -77,11 +79,14 @@ object SimpleGameGUI extends App {
 
     frame.addWindowListener(new WindowAdapter {
       override def windowClosing(x: WindowEvent): Unit =
+        // Viene mandato un messaggio all'attore di morte se non ha ancora partecipato a una partita quando ha chiuso la finestra.
         if (noGameSelected)
         then
           actor.context.self ! Die
           System.exit(0)
     })
 
+  // Si crea l'attore giocatore e gli si passa il callback per inizializzare la gui alla sua creazione.
+  // onPlayerActorCreated callback.
   startupWithRole(Roles.frontend, 0)(Root.player("P" + System.currentTimeMillis().hashCode().toString, onPlayerActorCreated))
 }

@@ -9,6 +9,7 @@ import it.unibo.pcd.akka.cluster.advanced.messages.{FindGames, SudokuMessage}
 import scala.collection.mutable.Map as MutableMap
 import akka.actor.typed.Terminated
 import akka.actor.typed.Signal
+import it.unibo.pcd.akka.cluster.advanced.Root.player
  
 type PlayerMessageExtended = PlayerMessage | PListingResponse | Terminated
  
@@ -121,6 +122,7 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
               hostPlayer = null
               hostPlayerId = ""
               lobby ! CreateGame(this.id, context.self)
+              activePlayers.filterNot(act => act._1 == this.id).foreach((actId, act) => context.watchWith(act, PlayerDeath(actId, act)))
             case (pid, act) => 
               hostPlayer = act
               hostPlayerId = pid
