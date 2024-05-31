@@ -18,10 +18,6 @@ case class FindGames(playerID: String, replyTo: ActorRef[PlayerMessage]) extends
   * Lo manda l'attore giocatore all'attore lobby.
   */
 case class CreateGame(playerID: String, player: ActorRef[PlayerMessage]) extends LobbyMessage
-/**
- * Lo manda l'attore giocatore all'attore lobby.
- */
-case class EndGame(playerID: String) extends LobbyMessage
 
 /**
   * La risposta al messaggio FindGames dell'attore della lobby al giocatore.
@@ -36,12 +32,12 @@ object WatchHost extends PlayerMessage
   */
 object Die extends PlayerMessage
 /**
-  * Messaggio che viene inviato ad un attore quando un attore che stava seguendo muore.
+  *  Messaggio che viene inviato quando un attore muore.
   */
 case class PlayerDeath(playerID: String, player: ActorRef[PlayerMessage]) extends PlayerMessage, LobbyMessage
 
 /**
-  * Messaggio che viene mandato da un attore al creatore della partita per joinare.
+  * Messaggio che viene mandato da un attore al creatore della partita(host) per joinare.
   */
 case class JoinGame(playerID: String, replyTo: ActorRef[PlayerMessage]) extends PlayerMessage
 /** 

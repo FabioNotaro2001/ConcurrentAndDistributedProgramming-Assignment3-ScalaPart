@@ -6,6 +6,7 @@ object SudokuGenerator {
   val size = 9
   val subGridSize = 3
 
+  // Riempie la griglia passata in modo che sia un sudoku valido.
   def fillGrid(grid: Array[Array[Int]]): Boolean = {
     for (row <- 0 until size; col <- 0 until size) {
       if (grid(row)(col) == 0) {

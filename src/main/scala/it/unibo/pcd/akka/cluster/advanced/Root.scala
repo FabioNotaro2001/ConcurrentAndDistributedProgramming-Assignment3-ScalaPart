@@ -11,7 +11,10 @@ import scala.util.Random
 import it.unibo.pcd.akka.cluster.*
 import akka.actor.typed.ActorRef
 
+// Server.
 object Root:
+
+  // Crea una lobby.
   def lobby(): Behavior[Nothing] =
     Behaviors.setup { ctx =>
       val cluster = Cluster(ctx.system)
@@ -20,6 +23,7 @@ object Root:
       Behaviors.empty
     }
 
+  // Crea un player.
   def player(playerID: String, onActorCreated: (PlayerActor) => Unit): Behavior[Nothing] =
     Behaviors.setup { ctx =>
       val cluster = Cluster(ctx.system)

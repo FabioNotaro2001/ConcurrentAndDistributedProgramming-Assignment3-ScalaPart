@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference
 import java.beans.Transient
 import it.unibo.pcd.akka.cluster.advanced.SudokuGenerator.fillGrid
 
+// Wrapper per un array di array di interi.
 case class Grid(private val rows: Int, private val cols: Int):
   val grid = Array.ofDim[Int](rows, cols)
   private val updates = Array.fill[Int](rows, cols)(0)

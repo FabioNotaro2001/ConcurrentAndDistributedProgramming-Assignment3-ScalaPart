@@ -22,7 +22,7 @@ class SudokuGUI(val size: Int, player: PlayerActor):
   frame.add(checkButton, BorderLayout.SOUTH)
   frame.add(panel, BorderLayout.CENTER)
   
-  private val selectedNow = MutableMap[String, (Int, Int)]()
+  private val selectedNow = MutableMap[String, (Int, Int)]() // Mappa che collega gli ID partecipante alla cella selezionata da egli.
 
   def render(): Unit = SwingUtilities.invokeLater { () =>
     panel.updateGrid()
@@ -87,6 +87,7 @@ class SudokuGUI(val size: Int, player: PlayerActor):
     }
   })
 
+  // Quando si chiude la finestra viene mandato il messaggio al giocatore a cui è associata la gui.
   frame.addWindowListener(new WindowAdapter {
     override def windowClosing(x: WindowEvent): Unit =
       player.context.self ! Die
