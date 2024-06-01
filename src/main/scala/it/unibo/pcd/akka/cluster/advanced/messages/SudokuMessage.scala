@@ -46,7 +46,7 @@ case class JoinGame(playerID: String, replyTo: ActorRef[PlayerMessage]) extends 
 case class GameInfo(grid: Grid, participants: MutableMap[String, ActorRef[PlayerMessage]]) extends PlayerMessage
 
 /**
-  * Messaggio che viene mandato dell'host per dire ai partecipanti che uno nuovo si è unito alla partita.
+  * Messaggio che viene mandato dall'host per dire ai partecipanti che uno nuovo si è unito alla partita.
   */
 case class NewParticipant(id: String, actor: ActorRef[PlayerMessage]) extends PlayerMessage
 case class RemoveParticipant(id: String) extends PlayerMessage
@@ -56,7 +56,7 @@ case class RemoveParticipant(id: String) extends PlayerMessage
   */
 case class SendMove(playerID: String, row: Int, col: Int, number: Int) extends PlayerMessage
 /**
-  * Messaggio che è mandato dell'host a tutti gli altri giocatori della nuova mossa.
+  * Messaggio che è mandato dall'host a tutti gli altri giocatori della nuova mossa.
   */
 case class NewMove(row: Int, col: Int, number: Int, update: Int) extends PlayerMessage
 

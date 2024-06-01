@@ -92,7 +92,7 @@ case class PlayerActor(override val context: ActorContext[PlayerMessageExtended]
         if localGrid.get(row, col) != n
         then
           val upd = localGrid.set(row, col, n)
-          activePlayers.filterNot(act => act._1 == this.id).values.foreach(act => act ! NewMove(row, col, n, upd)) // Manda a tutti i giocatori attivi, tranne a chi ha fatto la move la nuova mossa.
+          activePlayers.filterNot(act => act._1 == this.id).values.foreach(act => act ! NewMove(row, col, n, upd)) // Manda a tutti i giocatori attivi, tranne a se stesso.
           localGUI.render()
         Behaviors.same
  
