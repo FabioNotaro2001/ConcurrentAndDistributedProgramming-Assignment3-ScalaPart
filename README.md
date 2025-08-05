@@ -16,9 +16,9 @@ This repository contains the Scala implementation for Assignment 3 of the Concur
 
 The project showcases various aspects of concurrent and distributed programming, including:
 
-- **Concurrency**: Implementing multiple threads to perform tasks simultaneously.
-- **Distributed Systems**: Simulating a network of nodes communicating over a distributed environment.
-- **Synchronization**: Managing shared resources to prevent conflicts in a multi-threaded context.
+- **Concurrency** -> implementing multiple threads to perform tasks simultaneously
+- **Distributed Systems** -> simulating a network of nodes communicating over a distributed environment
+- **Synchronization** -> managing shared resources to prevent conflicts in a multi-threaded context.
 
 ## Project Structure
 
@@ -36,10 +36,10 @@ The repository is organized as follows:
 
 
 
-- `src/main/scala/`: Contains the main Scala source files.
-- `.gitignore`: Specifies files and directories to be ignored by Git.
-- `.scalafmt.conf`: Configuration file for Scala code formatting.
-- `build.sbt`: SBT build configuration file.
+- `src/main/scala/` -> contains the main Scala source files
+- `.gitignore` -> specifies files and directories to be ignored by Git
+- `.scalafmt.conf` -> configuration file for Scala code formatting
+- `build.sbt` -> SBT build configuration file.
 
 ## Setup and Installation
 
